@@ -1,0 +1,24 @@
+public class Solution {
+    public int solve(int[] A, int B, int C) {
+        int n = A.length;
+        int s = 0, e = B-1;
+        int sum = 0;
+        for(int i=0; i<=e; i++){
+            sum += A[i];
+        }
+        if(sum == C){
+            return 1;
+        }
+        s++;
+        e++;
+        while(e<n){
+            sum = sum + A[e] - A[s-1];
+            if(sum == C){
+                return 1;
+            }
+            s++;
+            e++;
+        }
+        return 0;
+    }
+}
