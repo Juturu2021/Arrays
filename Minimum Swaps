@@ -1,0 +1,40 @@
+public class Solution {
+    public int solve(int[] A, int B) {
+        int n = A.length;
+        int count = 0, badNumbers = 0, ans = 0;
+        //this can be done using sliding window technique
+        //find the number of elements less than or equal to B
+        for(int i=0; i<n; i++){
+            if(A[i] <= B){
+                count++;
+            }
+        }
+
+        if(count <= 1){
+            return 0;
+        }
+        else{
+            int left = 0, right = 0;
+
+            while(right < count){
+                if(A[right] > B){
+                    badNumbers++;
+                }
+                right++;
+            }
+            ans = badNumbers;
+
+            while(right < n){
+                if(A[right] > B){
+                    badNumbers++;
+                }
+                if(A[left] > B){
+                    badNumbers--;
+                }
+                ans = Math.min(ans, badNumbers);
+                left++;right++;
+            }
+        }
+        return ans;
+    }
+}
