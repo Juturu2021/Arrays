@@ -127,13 +127,11 @@ Questions:
     Approach: travel from 0 to B (number of 1's to be added) and set the bits in that range
     Solution:
       public class Solution{
-        int setbitRange(int A, int B, int C){
           long solve(int A, int B, int C) {
               long ans = 0;
               for (int i = C; i < B + C; i++) {
                   ans = ans | (1 << i);
               }
               return ans;
-        }
         }
       }
